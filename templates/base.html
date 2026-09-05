@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}MISHI-ERP{% endblock %}</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+
+    <!-- MISHI-ERP application styles -->
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body x-data="{ sidebarOpen: false }">
+
+    {% include "partials/_navbar.html" %}
+
+    <div class="erp-layout">
+
+        {% include "partials/_sidebar.html" %}
+
+        <main class="erp-main">
+
+            <div class="container-fluid py-4">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% block content %}
+                {% endblock %}
+            </div>
+
+            {% include "partials/_footer.html" %}
+
+        </main>
+    </div>
+
+    <!-- Bootstrap -->
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Alpine.js -->
+    <script defer src="{% static 'vendor/alpine/alpine.min.js' %}"></script>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
+

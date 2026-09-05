@@ -17,13 +17,15 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-
-from core.views import home
-
+from core.views import backup_list, create_backup, home
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", home, name="home"),
+    path("backup/create/", create_backup, name="create_backup"), 
+    path("backups/", backup_list, name="backup_list"),
+    path("logout/", auth_views.LogoutView.as_view(), name="logout",),
 ]
 
 

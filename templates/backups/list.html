@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Database Backups | MISHI-ERP{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-header mb-4">
+    <div>
+        <p class="eyebrow">SYSTEM</p>
+        <h1 class="dashboard-title">Database Backups</h1>
+        <p class="dashboard-subtitle">
+            View and manage database backup records.
+        </p>
+    </div>
+
+    <div>
+        <form method="post" action="{% url 'create_backup' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary erp-primary-btn">
+                Create Backup
+            </button>
+        </form>
+    </div>
+</div>
+
+<div class="erp-card">
+
+    {% if backups %}
+
+        <div class="table-responsive">
+            <table class="table align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>Filename</th>
+                        <th>Created</th>
+                        <th>Size</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for backup in backups %}
+                    <tr>
+                        <td>{{ backup.filename }}</td>
+                        <td>{{ backup.created_at|date:"d M Y, H:i" }}</td>
+                        <td>{{ backup.file_size|filesizeformat }}</td>
+                        <td>
+                            <span class="badge text-bg-success">
+                                {{ backup.status }}
+                            </span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    {% else %}
+
+        <div class="text-center py-5">
+            <h5>No backups yet</h5>
+            <p class="text-muted mb-0">
+                Create your first database backup.
+            </p>
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
+

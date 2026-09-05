@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg erp-navbar">
+    <div class="container-fluid">
+
+        <button
+            class="btn btn-sidebar-toggle d-lg-none"
+            type="button"
+            @click="sidebarOpen = !sidebarOpen"
+            aria-label="Toggle navigation">
+            ☰
+        </button>
+
+        <a class="navbar-brand erp-brand" href="/">
+            MISHI-ERP
+        </a>
+
+        <div class="ms-auto d-flex align-items-center gap-3">
+
+            <button class="btn btn-icon" type="button" title="Notifications">
+                🔔
+            </button>
+
+            <div class="dropdown">
+                <button
+                    class="btn user-menu dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    type="button">
+
+                    <span class="user-avatar">
+                        {{ request.user.username|first|upper }}
+                    </span>
+
+                    <span class="d-none d-md-inline">
+                        {{ request.user.get_full_name|default:request.user.username }}
+                    </span>
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+
+                    <li>
+                        <a class="dropdown-item" href="/admin/">
+                            Administration
+                        </a>
+                    </li>
+
+                    <li><hr class="dropdown-divider"></li>
+
+                    <li>
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="dropdown-item">
+                                Sign out
+                            </button>
+                        </form>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</nav>
+

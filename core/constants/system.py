@@ -1,0 +1,6 @@
+# Common system-level constants.
+
+APP_NAME = "MISHI-ERP"
+
+BACKUP_STATUS_SUCCESS = "SUCCESS"
+BACKUP_STATUS_FAILED = "FAILED"

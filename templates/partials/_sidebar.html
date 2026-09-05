@@ -1,0 +1,70 @@
+<aside
+    class="erp-sidebar"
+    :class="{ 'sidebar-visible': sidebarOpen }">
+
+    <div class="sidebar-header">
+        <div class="sidebar-title">Workspace</div>
+        <div class="sidebar-subtitle">Personal ERP</div>
+    </div>
+
+    <nav class="sidebar-nav">
+
+        <a href="/" class="sidebar-link active">
+            <span class="sidebar-icon">⌂</span>
+            <span>Dashboard</span>
+        </a>
+
+        <div class="sidebar-section">ERP</div>
+
+        <a href="#" class="sidebar-link">
+            <span class="sidebar-icon">▣</span>
+            <span>Documents</span>
+        </a>
+
+        <a href="#" class="sidebar-link">
+            <span class="sidebar-icon">₹</span>
+            <span>Finance</span>
+        </a>
+
+        <a href="#" class="sidebar-link">
+            <span class="sidebar-icon">✓</span>
+            <span>Tasks</span>
+        </a>
+
+        <a href="#" class="sidebar-link">
+            <span class="sidebar-icon">◷</span>
+            <span>Events</span>
+        </a>
+
+        <div class="sidebar-section">Automation</div>
+
+        <a href="#" class="sidebar-link">
+            <span class="sidebar-icon">⚡</span>
+            <span>Automation</span>
+        </a>
+
+        <a href="#" class="sidebar-link">
+            <span class="sidebar-icon">✦</span>
+            <span>AI Agent</span>
+        </a>
+
+        <a href="#" class="sidebar-link">
+            <span class="sidebar-icon">✈</span>
+            <span>Telegram</span>
+        </a>
+
+        <div class="sidebar-section">System</div>
+
+        <a href="/admin/" class="sidebar-link">
+            <span class="sidebar-icon">⚙</span>
+            <span>Administration</span>
+        </a>
+
+        <a href="{% url 'backup_list' %}" class="sidebar-link">
+            <span class="sidebar-icon">▣</span>
+            <span>Backups</span>
+        </a>
+
+    </nav>
+</aside>
+

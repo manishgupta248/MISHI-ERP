@@ -123,3 +123,45 @@ STATICFILES_DIRS = [BASE_DIR / "static", ]
 
 # Default primary key
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Authentication redirects
+LOGIN_URL = "/admin/login/"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+
+# Logging
+LOG_DIR = BASE_DIR / "data" / "logs"
+LOG_DIR.mkdir(parents=True, exist_ok=True)
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+
+    "formatters": {
+        "standard": {
+            "format": "{asctime} | {levelname} | {name} | {message}",
+            "style": "{",
+        },
+    },
+
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "standard",
+        },
+        "file": {
+            "class": "logging.FileHandler",
+            "filename": LOG_DIR / "mishi-erp.log",
+            "formatter": "standard",
+            "encoding": "utf-8",
+        },
+    },
+
+    "loggers": {
+        "mishi": {
+            "handlers": ["console", "file"],
+            "level": "INFO",
+            "propagate": False,
+        },
+    },
+}
