@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}{% if form.instance.pk %}Edit Task{% else %}New Task{% endif %} | MISHI-ERP{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-header mb-4">
+    <div>
+        <p class="eyebrow">TASKS</p>
+        <h1 class="dashboard-title">{% if form.instance.pk %}Edit Task{% else %}New Task{% endif %}</h1>
+    </div>
+</div>
+
+<div class="erp-card">
+    <!-- enctype is required here so the file attachment field actually uploads -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% for field in form %}
+        <div class="mb-3">
+            <label class="form-label">{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}
+            <div class="text-danger small">{{ field.errors }}</div>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-primary erp-primary-btn">Save Task</button>
+        <a href="{% url 'todo:task_list' %}" class="btn btn-outline-secondary">Cancel</a>
+    </form>
+</div>
+
+{% endblock %}

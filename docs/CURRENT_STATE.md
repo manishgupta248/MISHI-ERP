@@ -60,9 +60,18 @@ Phase 1 — Foundation
 - GitHub remote configured
 - Initial foundation commit pushed
 
+### To-Do Module
+- Task model: classification, status, priority, due date/time,
+  related link, file attachment, repeat label
+- Full CRUD (create, edit, delete) with per-user ownership
+- Task list with filter (status/classification/priority) and sort
+- Dashboard "Pending Tasks" count wired to live data
+- Sidebar and dashboard quick-action links active
+- REST API (/api/tasks/) scoped to the authenticated user
+
 ## Current Step
 
-Phase 1 — Foundation UI and core services
+Phase 2 — Core Platform (To-Do module complete)
 
 ## Next Objectives
 

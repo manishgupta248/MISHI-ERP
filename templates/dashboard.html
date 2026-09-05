@@ -26,8 +26,10 @@
     <div class="col-12 col-sm-6 col-xl-3">
         <div class="erp-card stat-card">
             <div class="stat-label">Pending Tasks</div>
-            <div class="stat-value">0</div>
-            <div class="stat-note">Nothing pending</div>
+            <div class="stat-value">{{ pending_tasks_count }}</div>
+            <div class="stat-note">
+                {% if pending_tasks_count %}Tasks awaiting action{% else %}Nothing pending{% endif %}
+            </div>
         </div>
     </div>
 
@@ -69,14 +71,14 @@
         </div>
 
         <div class="d-flex gap-2">
-            <form method="post" action="{% url 'create_backup' %}">
+            <form method="post" action="{% url 'core:create_backup' %}">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-primary erp-primary-btn">
                     Create Backup
                 </button>
             </form>
 
-            <a href="{% url 'backup_list' %}" class="btn btn-outline-secondary">
+            <a href="{% url 'core:backup_list' %}" class="btn btn-outline-secondary">
                 Backup History
             </a>
         </div>
@@ -107,7 +109,7 @@
                 </div>
 
                 <div class="col-12 col-md-6">
-                    <a href="#" class="quick-action">
+                    <a href="{% url 'todo:task_list' %}" class="quick-action">
                         <span class="quick-icon">✓</span>
                         <span>
                             <strong>Tasks</strong>

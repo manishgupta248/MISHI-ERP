@@ -18,3 +18,17 @@ class BackupRecord(models.Model):
         return self.filename
 
 # ================================================
+
+class TimeStampedModel(models.Model):
+    """
+    Abstract base class adding created/updated timestamps.
+    Any model in any app can inherit this instead of redefining
+    created_at/updated_at every time.
+    """
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True  # this itself never becomes a database table
+
+# =====================================================

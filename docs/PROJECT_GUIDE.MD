@@ -50,6 +50,18 @@ git commit -m "Phase 1: establish Django foundation"
 git reset docs/PROJECT_GUIDE.MD
 git push -u origin main
 
+# =====================================================
+# Delete the old database file
+Remove-Item -Force .\data\db.sqlite3 -ErrorAction SilentlyContinue
+
+# Delete old backup files (keeps the backup folder itself via .gitkeep)
+Get-ChildItem -Path .\backup -Filter "db_backup_*.sqlite3" | Remove-Item -Force
+
+# Delete old core migrations (keep __init__.py so it's still a valid Python package)
+Get-ChildItem -Path .\core\migrations -Exclude "__init__.py" | Remove-Item -Force
+
+# Generate a strong secret key to put in your .env file
+python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
 # ======================================================
 # to Install self-hosted frontend assets - Bootstrap + Alpine
 

@@ -14,7 +14,7 @@
     </div>
 
     <div>
-        <form method="post" action="{% url 'create_backup' %}">
+        <form method="post" action="{% url 'core:create_backup' %}">
             {% csrf_token %}
             <button type="submit" class="btn btn-primary erp-primary-btn">
                 Create Backup

@@ -14,9 +14,11 @@ __pycache__/
 *.log
 db.sqlite3
 data/*.sqlite3
+backup/*.sqlite3
 
 # Static/media generated files
 staticfiles/
+data/media/
 media/
 
 # Backups
@@ -29,3 +31,6 @@ backup/
 # OS
 .DS_Store
 Thumbs.db
+
+
+
